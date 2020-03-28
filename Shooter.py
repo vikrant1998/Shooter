@@ -48,7 +48,7 @@ def draw_kill_bar(surf, x, y, pct):
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.transform.scale(vik_img, (90, 110))
+        self.image = pygame.transform.scale(vik_img, (80, 110))
         self.rect = self.image.get_rect()
         self.radius = int(90 / 2 * 0.9)
         self.rect.centerx = WIDTH / 2
@@ -109,7 +109,7 @@ class Mob(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, lastKeyPressed):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.transform.scale(wipe_img, (10, 20))
+        self.image = pygame.transform.scale(wipe_img, (20, 30))
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x
@@ -179,15 +179,15 @@ clock = pygame.time.Clock()
 
 #Load Sounds
 shoot_sound = pygame.mixer.Sound(path.join(res_dir, "gunfire.wav"))
-pygame.mixer.music.load(path.join(res_dir, 'maskoff.mp3'))
+pygame.mixer.music.load(path.join(res_dir, 'wolf.mp3'))
 pygame.mixer.music.set_volume(0.5)
 
 #Load images
 main_bg    = pygame.image.load(path.join(res_dir, "bg.png")).convert_alpha()
 background = pygame.image.load(path.join(res_dir, "nyc.jpg")).convert()
 corona_img = pygame.image.load(path.join(res_dir, "corona.png")).convert_alpha()
-vik_img    = pygame.image.load(path.join(res_dir, "vik.png")).convert_alpha()
-wipe_img   = pygame.image.load(path.join(res_dir, "wipe.jpg")).convert_alpha()
+vik_img    = pygame.image.load(path.join(res_dir, "powell.png")).convert_alpha()
+wipe_img   = pygame.image.load(path.join(res_dir, "cash.png")).convert_alpha()
 
 explosion_anim = {}
 explosion_anim['lg'] = []
@@ -288,9 +288,9 @@ def initializeGame():
         screen.blit(background, background_rect)
         all_sprites.draw(screen)
 
-        draw_text(screen, 'DAMAGE', 30, WIDTH / 2 - 50, HEIGHT - 100)
+        draw_text(screen, 'ECONOMY', 20, WIDTH / 2 - 50, HEIGHT - 100)
         draw_text(screen, str(hitCounter), 50, WIDTH / 2 - 70, HEIGHT - 60)
-        draw_text(screen, ' KILLS', 30, WIDTH / 2 + 50, HEIGHT - 100)
+        draw_text(screen, 'PORTFOLIO', 20, WIDTH / 2 + 50, HEIGHT - 100)
         draw_text(screen, str(shootCounter), 50, WIDTH / 2 + 70, HEIGHT - 60)
         
         draw_shield_bar(screen, 230, HEIGHT - 70, hitCounter)
